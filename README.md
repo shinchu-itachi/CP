@@ -1,2 +1,2 @@
 # CP
-Some of the CP algorithm
+Some of the CP Problem Solving Algorithm Example
