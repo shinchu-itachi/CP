@@ -1,0 +1,59 @@
+// below code will give the count of how many subsequence that are present which when added gives the sum equal to K
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void print ( vector<int> & a ) {
+    if ( a.size() == 0) {
+        cout << "[]" << endl;
+        return;
+    }
+
+
+    for ( auto i : a ) cout << i << " ";
+
+    cout << endl;
+}
+
+
+int subsequences(int ind , vector<int> & a , vector <int> & b , int sum , int k, int n , int count) {
+
+    // this function will help in printing all subsequence of the given array A
+    // subsequence is something which can have a contagious or non contagious array elements but following the order
+    // eg :- A = [ 1  3  2]  subsequences will be [1 3]  , [ 1 3 2 ] , [ 1 2] , [1] , [3 2] , [3] , [2] , []
+    // but [ 1 2 3 ] is not a subsequence.
+
+    // base case
+    if ( ind >= n) {
+        if ( sum == k )
+            count ++;
+
+
+        return count;
+    }
+
+    sum += a[ind];
+    b.push_back(a[ind]);
+    count = subsequences( ind + 1 , a , b , sum , k , n , count);
+    sum -= a[ind];
+    b.pop_back();
+    count = subsequences ( ind + 1 , a , b , sum , k , n , count);
+
+
+    return count;
+}
+
+int main () {
+
+    // all the subsets using recursion method
+
+    int n , k ; cin >> n >> k;
+
+    vector<int> a ( n , 0 ) , b;
+    for ( auto & i : a) cin >> i;
+
+    int ans =  subsequences( 0 , a , b , 0 , k , n , 0);
+
+    if ( ans <= 0 ) cout << -1 << endl;
+    else cout << ans << endl;
+}
