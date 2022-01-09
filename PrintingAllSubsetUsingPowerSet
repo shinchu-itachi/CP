@@ -19,7 +19,7 @@ void powerset ( string s , int n) {
 	for ( int i = 0 ; i < (1 << n)  ; i ++) {
 		res = "";
 		for ( int j = 0 ; j < n ; j ++) {
-			if ( i & ( i << j))
+			if ( i & ( 1 << j))
 				res.push_back(s[j]);
 		}
 
@@ -36,3 +36,6 @@ int main() {
 
 	return 0;
 }
+
+
+//practise problem link :- https://practice.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1/
