@@ -1,0 +1,340 @@
+// the below code is to find the subsequences possibilty of String B in String A
+
+#include <bits/stdc++.h>
+using namespace std ;
+
+#define sc second
+
+void sub (int i , string s , string res , string t , int n , vector<int>& r) {
+	// first we directly compute the subsequences and then compare each subsequence formed
+
+	// cout << t << " " << res << " " << cnt << endl;
+	if ( i >= n) {
+		if ( res == t)
+			r.push_back(1);
+		return ;
+	}
+
+	res.push_back(s[i]);
+	// cout << res << "\n";
+	sub( i + 1, s, res, t , n , r);
+	res.pop_back();
+	sub( i + 1 , s, res, t, n ,  r);
+
+
+	return ;
+}
+
+void numDistinct(string s, string t) {
+	string res = "";
+	vector <int > r;
+	sub ( 0 , s, res , t , s.size() , r);
+
+	cout << r.size();
+}
+
+void solve () {
+	numDistinct("rabbbit" , "rabbit");
+}
+
+
+
+inline void testcases() {
+	int test = 1, testcase = 1 ;
+	// cin >> test ;
+
+	cout << setprecision(12) ;
+	cerr << setprecision(8) ;
+	while (test --) {
+		// cout << "Case #" << testcase++ << ": ";
+		solve () ;
+	}
+}
+
+
+
+
+
+int main () {
+	fastio();
+
+#ifndef ONLINE_JUDGE
+	// freopen("output.txt", "w", stdout);
+	// freopen("input.txt", "r", stdin);
+	//freopen("error.txt", "w", stderr);
+#endif
+
+	auto start = high_resolution_clock::now();
+
+	testcases();
+
+	auto end = high_resolution_clock::now();
+	auto duration = duration_cast<microseconds>(end - start);
+
+	cerr << "Time : " << duration.count() / 1000 ;
+}
+
+/* output
+
+input :-  string A :- rabbbit and string B:- rabbit
+output :- 3
+
+rabbit  0
+rabbit r 0
+rabbit ra 0
+rabbit rab 0
+rabbit rabb 0
+rabbit rabbb 0
+rabbit rabbbi 0
+rabbit rabbbit 0
+rabbit rabbbi 0
+rabbit rabbb 0
+rabbit rabbbt 0
+rabbit rabbb 0
+rabbit rabb 0
+rabbit rabbi 0
+rabbit rabbit 0 -------> first found
+rabbit rabbi 1
+rabbit rabb 1
+rabbit rabbt 1
+rabbit rabb 1
+rabbit rab 1
+rabbit rabb 1
+rabbit rabbi 1
+rabbit rabbit 1  ------------> second found
+rabbit rabbi 2
+rabbit rabb 2
+rabbit rabbt 2
+rabbit rabb 2
+rabbit rab 2
+rabbit rabi 2
+rabbit rabit 2
+rabbit rabi 2
+rabbit rab 2
+rabbit rabt 2
+rabbit rab 2
+rabbit ra 2
+rabbit rab 2
+rabbit rabb 2
+rabbit rabbi 2
+rabbit rabbit 2 --------------> 3 found
+rabbit rabbi 3
+rabbit rabb 3
+rabbit rabbt 3
+rabbit rabb 3
+rabbit rab 3
+rabbit rabi 3
+rabbit rabit 3
+rabbit rabi 3
+rabbit rab 3
+rabbit rabt 3
+rabbit rab 3
+rabbit ra 3
+rabbit rab 3
+rabbit rabi 3
+rabbit rabit 3
+rabbit rabi 3
+rabbit rab 3
+rabbit rabt 3
+rabbit rab 3
+rabbit ra 3
+rabbit rai 3
+rabbit rait 3
+rabbit rai 3
+rabbit ra 3
+rabbit rat 3
+rabbit ra 3
+rabbit r 3
+rabbit rb 3
+rabbit rbb 3
+rabbit rbbb 3
+rabbit rbbbi 3
+rabbit rbbbit 3
+rabbit rbbbi 3
+rabbit rbbb 3
+rabbit rbbbt 3
+rabbit rbbb 3
+rabbit rbb 3
+rabbit rbbi 3
+rabbit rbbit 3
+rabbit rbbi 3
+rabbit rbb 3
+rabbit rbbt 3
+rabbit rbb 3
+rabbit rb 3
+rabbit rbb 3
+rabbit rbbi 3
+rabbit rbbit 3
+rabbit rbbi 3
+rabbit rbb 3
+rabbit rbbt 3
+rabbit rbb 3
+rabbit rb 3
+rabbit rbi 3
+rabbit rbit 3
+rabbit rbi 3
+rabbit rb 3
+rabbit rbt 3
+rabbit rb 3
+rabbit r 3
+rabbit rb 3
+rabbit rbb 3
+rabbit rbbi 3
+rabbit rbbit 3
+rabbit rbbi 3
+rabbit rbb 3
+rabbit rbbt 3
+rabbit rbb 3
+rabbit rb 3
+rabbit rbi 3
+rabbit rbit 3
+rabbit rbi 3
+rabbit rb 3
+rabbit rbt 3
+rabbit rb 3
+rabbit r 3
+rabbit rb 3
+rabbit rbi 3
+rabbit rbit 3
+rabbit rbi 3
+rabbit rb 3
+rabbit rbt 3
+rabbit rb 3
+rabbit r 3
+rabbit ri 3
+rabbit rit 3
+rabbit ri 3
+rabbit r 3
+rabbit rt 3
+rabbit r 3
+rabbit  3
+rabbit a 3
+rabbit ab 3
+rabbit abb 3
+rabbit abbb 3
+rabbit abbbi 3
+rabbit abbbit 3
+rabbit abbbi 3
+rabbit abbb 3
+rabbit abbbt 3
+rabbit abbb 3
+rabbit abb 3
+rabbit abbi 3
+rabbit abbit 3
+rabbit abbi 3
+rabbit abb 3
+rabbit abbt 3
+rabbit abb 3
+rabbit ab 3
+rabbit abb 3
+rabbit abbi 3
+rabbit abbit 3
+rabbit abbi 3
+rabbit abb 3
+rabbit abbt 3
+rabbit abb 3
+rabbit ab 3
+rabbit abi 3
+rabbit abit 3
+rabbit abi 3
+rabbit ab 3
+rabbit abt 3
+rabbit ab 3
+rabbit a 3
+rabbit ab 3
+rabbit abb 3
+rabbit abbi 3
+rabbit abbit 3
+rabbit abbi 3
+rabbit abb 3
+rabbit abbt 3
+rabbit abb 3
+rabbit ab 3
+rabbit abi 3
+rabbit abit 3
+rabbit abi 3
+rabbit ab 3
+rabbit abt 3
+rabbit ab 3
+rabbit a 3
+rabbit ab 3
+rabbit abi 3
+rabbit abit 3
+rabbit abi 3
+rabbit ab 3
+rabbit abt 3
+rabbit ab 3
+rabbit a 3
+rabbit ai 3
+rabbit ait 3
+rabbit ai 3
+rabbit a 3
+rabbit at 3
+rabbit a 3
+rabbit  3
+rabbit b 3
+rabbit bb 3
+rabbit bbb 3
+rabbit bbbi 3
+rabbit bbbit 3
+rabbit bbbi 3
+rabbit bbb 3
+rabbit bbbt 3
+rabbit bbb 3
+rabbit bb 3
+rabbit bbi 3
+rabbit bbit 3
+rabbit bbi 3
+rabbit bb 3
+rabbit bbt 3
+rabbit bb 3
+rabbit b 3
+rabbit bb 3
+rabbit bbi 3
+rabbit bbit 3
+rabbit bbi 3
+rabbit bb 3
+rabbit bbt 3
+rabbit bb 3
+rabbit b 3
+rabbit bi 3
+rabbit bit 3
+rabbit bi 3
+rabbit b 3
+rabbit bt 3
+rabbit b 3
+rabbit  3
+rabbit b 3
+rabbit bb 3
+rabbit bbi 3
+rabbit bbit 3
+rabbit bbi 3
+rabbit bb 3
+rabbit bbt 3
+rabbit bb 3
+rabbit b 3
+rabbit bi 3
+rabbit bit 3
+rabbit bi 3
+rabbit b 3
+rabbit bt 3
+rabbit b 3
+rabbit  3
+rabbit b 3
+rabbit bi 3
+rabbit bit 3
+rabbit bi 3
+rabbit b 3
+rabbit bt 3
+rabbit b 3
+rabbit  3
+rabbit i 3
+rabbit it 3
+rabbit i 3
+rabbit  3
+rabbit t 3
+rabbit  3   
+
+finatl answer :-  3
+
+*/
