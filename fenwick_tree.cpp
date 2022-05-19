@@ -121,7 +121,7 @@ int sum ( int i ){
         // sum functions return sum till the ith index 
         int s = 0 ;
 
-        for (  i ; i <= n ; i = i - ( i & -i))
+        for (  i ; i > 0 ; i = i - ( i & -i))   // please look it carefully
                 s += bit[i];
 
         return s;
